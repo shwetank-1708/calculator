@@ -3,6 +3,7 @@ import "./App.css";
 
 function App() {
   const [val, setVal] = useState(0);
+  const num: number[] = [];
 
   const changeHandler = () => {
     console.log("Change Happened");
@@ -12,6 +13,15 @@ function App() {
     console.log("Number Clicked", val);
     console.log(typeof val);
     setVal(val);
+  };
+
+  num.push(val);
+  console.log(num);
+  console.log(typeof num);
+
+  const operationClicked = (op: string) => {
+    console.log("Operation Clicked", op);
+    console.log(typeof op);
   };
 
   return (
@@ -47,6 +57,7 @@ function App() {
               type="button"
               value="/"
               className="bg-yellow-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer"
+              onClick={() => operationClicked("/")}
             />
           </div>
 
@@ -73,6 +84,7 @@ function App() {
               type="button"
               value="*"
               className="bg-yellow-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer"
+              onClick={() => operationClicked("*")}
             />
           </div>
 
@@ -99,6 +111,7 @@ function App() {
               type="button"
               value="-"
               className="bg-yellow-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer"
+              onClick={() => operationClicked("-")}
             />
           </div>
 
@@ -125,6 +138,7 @@ function App() {
               type="button"
               value="+"
               className="bg-yellow-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer"
+              onClick={() => operationClicked("+")}
             />
           </div>
 
@@ -143,6 +157,7 @@ function App() {
               type="button"
               value="="
               className="bg-yellow-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer"
+              onClick={() => operationClicked("=")}
             />
           </div>
         </form>
