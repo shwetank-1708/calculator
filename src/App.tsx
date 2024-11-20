@@ -3,21 +3,17 @@ import "./App.css";
 
 function App() {
   const [val, setVal] = useState(0);
-  const num: number[] = [];
+  const [num, setNum] = useState<number[]>([]);
 
   const changeHandler = () => {
     console.log("Change Happened");
   };
 
-  const numberClicked = (val: number) => {
-    console.log("Number Clicked", val);
-    console.log(typeof val);
-    setVal(val);
+  const numberClicked = (newVal: number) => {
+    console.log("Number Clicked", newVal);
+    setVal(newVal);
+    setNum((prev) => [...prev, newVal]);
   };
-
-  num.push(val);
-  console.log(num);
-  console.log(typeof num);
 
   const operationClicked = (op: string) => {
     console.log("Operation Clicked", op);
