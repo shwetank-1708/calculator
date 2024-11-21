@@ -4,6 +4,7 @@ import "./App.css";
 function App() {
   const [val, setVal] = useState(0);
   const [num, setNum] = useState<number[]>([]);
+  const [operation, setOperation] = useState<string | null>(null);
 
   const changeHandler = () => {
     console.log("Change Happened");
@@ -13,11 +14,42 @@ function App() {
     console.log("Number Clicked", newVal);
     setVal(newVal);
     setNum((prev) => [...prev, newVal]);
+    // console.log(num);
   };
 
   const operationClicked = (op: string) => {
     console.log("Operation Clicked", op);
-    console.log(typeof op);
+    setOperation(op);
+  };
+
+  const calculateResult = () => {
+    if (num.length < 2) {
+      console.log("Insufficient numbers for calculation.");
+      return null;
+    }
+
+    let result = 0;
+
+    if (operation === "+") {
+      result = num.reduce((prev, curr) => prev + curr, 0);
+    } else if (operation === "-") {
+      result = num.reduce((prev, curr) => prev - curr);
+    } else if (operation === "*") {
+      result = num.reduce((prev, curr) => prev * curr, 1);
+    } else if (operation === "/") {
+      result = num.reduce((prev, curr) => (curr !== 0 ? prev / curr : NaN));
+    } else {
+      console.log("Unknown operation");
+      return null;
+    }
+
+    console.log("Calculated Result:", result);
+    return result;
+  };
+
+  const equalClicked = () => {
+    const result = calculateResult();
+    console.log(result);
   };
 
   return (
@@ -153,7 +185,7 @@ function App() {
               type="button"
               value="="
               className="bg-yellow-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer"
-              onClick={() => operationClicked("=")}
+              onClick={() => equalClicked()}
             />
           </div>
         </form>
