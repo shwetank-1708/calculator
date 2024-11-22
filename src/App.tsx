@@ -50,6 +50,11 @@ function App() {
   const equalClicked = () => {
     const result = calculateResult();
     console.log(result);
+    setVal(result ?? 0);
+  };
+
+  const acClicked = () => {
+    setVal(0);
   };
 
   return (
@@ -69,22 +74,23 @@ function App() {
             <input
               type="button"
               value="A/C"
-              className="bg-gray-300 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer"
+              className="bg-gray-300 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer hover:bg-gray-200"
+              onClick={acClicked}
             />
             <input
               type="button"
               value="+/-"
-              className="bg-gray-300 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer"
+              className="bg-gray-300 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer hover:bg-gray-200"
             />
             <input
               type="button"
               value="%"
-              className="bg-gray-300 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer"
+              className="bg-gray-300 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer hover:bg-gray-200"
             />
             <input
               type="button"
               value="/"
-              className="bg-yellow-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer"
+              className="bg-yellow-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer hover:bg-yellow-400"
               onClick={() => operationClicked("/")}
             />
           </div>
@@ -93,25 +99,25 @@ function App() {
             <input
               type="button"
               value="7"
-              className="bg-gray-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer"
+              className="bg-gray-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer hover:bg-gray-400"
               onClick={() => numberClicked(7)}
             />
             <input
               type="button"
               value="8"
-              className="bg-gray-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer"
+              className="bg-gray-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer hover:bg-gray-400"
               onClick={() => numberClicked(8)}
             />
             <input
               type="button"
               value="9"
-              className="bg-gray-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer"
+              className="bg-gray-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer hover:bg-gray-400"
               onClick={() => numberClicked(9)}
             />
             <input
               type="button"
               value="*"
-              className="bg-yellow-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer"
+              className="bg-yellow-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer hover:bg-yellow-400"
               onClick={() => operationClicked("*")}
             />
           </div>
@@ -120,25 +126,25 @@ function App() {
             <input
               type="button"
               value="4"
-              className="bg-gray-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer"
+              className="bg-gray-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer hover:bg-gray-400"
               onClick={() => numberClicked(4)}
             />
             <input
               type="button"
               value="5"
-              className="bg-gray-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer"
+              className="bg-gray-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer hover:bg-gray-400"
               onClick={() => numberClicked(5)}
             />
             <input
               type="button"
               value="6"
-              className="bg-gray-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer"
+              className="bg-gray-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer hover:bg-gray-400"
               onClick={() => numberClicked(6)}
             />
             <input
               type="button"
               value="-"
-              className="bg-yellow-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer"
+              className="bg-yellow-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer hover:bg-yellow-400"
               onClick={() => operationClicked("-")}
             />
           </div>
@@ -147,25 +153,25 @@ function App() {
             <input
               type="button"
               value="1"
-              className="bg-gray-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer"
+              className="bg-gray-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer hover:bg-gray-400"
               onClick={() => numberClicked(1)}
             />
             <input
               type="button"
               value="2"
-              className="bg-gray-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer"
+              className="bg-gray-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer hover:bg-gray-400"
               onClick={() => numberClicked(2)}
             />
             <input
               type="button"
               value="3"
-              className="bg-gray-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer"
+              className="bg-gray-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer hover:bg-gray-400"
               onClick={() => numberClicked(3)}
             />
             <input
               type="button"
               value="+"
-              className="bg-yellow-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer"
+              className="bg-yellow-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer hover:bg-yellow-400"
               onClick={() => operationClicked("+")}
             />
           </div>
@@ -174,17 +180,17 @@ function App() {
             <input
               type="button"
               value="0"
-              className="bg-gray-500 p-5 rounded-full text-xl m-1 w-[150px] text-left cursor-pointer"
+              className="bg-gray-500 p-5 rounded-full text-xl m-1 w-[150px] text-left cursor-pointer hover:bg-gray-400"
             />
             <input
               type="button"
               value="."
-              className="bg-gray-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer"
+              className="bg-gray-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer hover:bg-gray-400"
             />
             <input
               type="button"
               value="="
-              className="bg-yellow-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer"
+              className="bg-yellow-500 p-5 rounded-full text-xl m-1 w-[70px] cursor-pointer hover:bg-yellow-400"
               onClick={() => equalClicked()}
             />
           </div>
