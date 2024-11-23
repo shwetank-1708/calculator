@@ -1,8 +1,10 @@
 import { useState } from "react";
 import "./App.css";
 
+let newNum: number[] = [];
+
 function App() {
-  const [val, setVal] = useState(0);
+  const [val, setVal] = useState<number[]>([]);
   const [num, setNum] = useState<number[]>([]);
   const [operation, setOperation] = useState<string | null>(null);
 
@@ -12,7 +14,10 @@ function App() {
 
   const numberClicked = (newVal: number) => {
     console.log("Number Clicked", newVal);
-    setVal(newVal);
+    newNum.push(Number(newVal));
+    console.log(newNum);
+    console.log(newNum.join(""));
+    setVal(newNum);
     setNum((prev) => [...prev, newVal]);
     // console.log(num);
   };
@@ -20,6 +25,7 @@ function App() {
   const operationClicked = (op: string) => {
     console.log("Operation Clicked", op);
     setOperation(op);
+    setVal([]);
   };
 
   const calculateResult = () => {
@@ -64,7 +70,7 @@ function App() {
           <div className="">
             <input
               type="number"
-              value={val}
+              value={val.join("")}
               className="text-right text-white text-4xl m-3 px-[0px] w-[300px] bg-black"
               onChange={changeHandler}
             />
