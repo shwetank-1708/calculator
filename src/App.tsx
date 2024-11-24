@@ -1,11 +1,12 @@
 import { useState } from "react";
 import "./App.css";
 
-let newNum: number[] = [];
+let firstNum: number[] = [];
+let secondNum: number[] = [];
 
 function App() {
-  const [val, setVal] = useState<number[]>([]);
-  const [num, setNum] = useState<number[]>([]);
+  const [value, setValue] = useState(0);
+  // const [num, setNum] = useState<number[]>([]);
   const [operation, setOperation] = useState<string | null>(null);
 
   const changeHandler = () => {
@@ -13,13 +14,9 @@ function App() {
   };
 
   const numberClicked = (newVal: number) => {
-    console.log("Number Clicked", newVal);
-    newNum.push(Number(newVal));
-    console.log(newNum);
-    console.log(newNum.join(""));
-    setVal(newNum);
-    setNum((prev) => [...prev, newVal]);
-    // console.log(num);
+    setValue(newVal);
+    firstNum.push(Number(newVal));
+    console.log(firstNum);
   };
 
   const operationClicked = (op: string) => {
@@ -28,36 +25,36 @@ function App() {
     setVal([]);
   };
 
-  const calculateResult = () => {
-    if (num.length < 2) {
-      console.log("Insufficient numbers for calculation.");
-      return null;
-    }
+  // const calculateResult = () => {
+  //   if (num.length < 2) {
+  //     console.log("Insufficient numbers for calculation.");
+  //     return null;
+  //   }
 
-    let result = 0;
+  //   let result = 0;
 
-    if (operation === "+") {
-      result = num.reduce((prev, curr) => prev + curr, 0);
-    } else if (operation === "-") {
-      result = num.reduce((prev, curr) => prev - curr);
-    } else if (operation === "*") {
-      result = num.reduce((prev, curr) => prev * curr, 1);
-    } else if (operation === "/") {
-      result = num.reduce((prev, curr) => (curr !== 0 ? prev / curr : NaN));
-    } else {
-      console.log("Unknown operation");
-      return null;
-    }
+  //   if (operation === "+") {
+  //     result = num.reduce((prev, curr) => prev + curr, 0);
+  //   } else if (operation === "-") {
+  //     result = num.reduce((prev, curr) => prev - curr);
+  //   } else if (operation === "*") {
+  //     result = num.reduce((prev, curr) => prev * curr, 1);
+  //   } else if (operation === "/") {
+  //     result = num.reduce((prev, curr) => (curr !== 0 ? prev / curr : NaN));
+  //   } else {
+  //     console.log("Unknown operation");
+  //     return null;
+  //   }
 
-    console.log("Calculated Result:", result);
-    return result;
-  };
+  //   console.log("Calculated Result:", result);
+  //   return result;
+  // };
 
-  const equalClicked = () => {
-    const result = calculateResult();
-    console.log(result);
-    setVal(result ?? 0);
-  };
+  // const equalClicked = () => {
+  //   const result = calculateResult();
+  //   console.log(result);
+  //   setVal(result ?? 0);
+  // };
 
   const acClicked = () => {
     setVal(0);
@@ -70,7 +67,7 @@ function App() {
           <div className="">
             <input
               type="number"
-              value={val.join("")}
+              value={value}
               className="text-right text-white text-4xl m-3 px-[0px] w-[300px] bg-black"
               onChange={changeHandler}
             />
