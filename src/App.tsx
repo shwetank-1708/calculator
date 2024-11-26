@@ -207,18 +207,41 @@ import { useState } from "react";
 
 // export default App;
 
+let firstNum = [];
+
 const App = () => {
   const [value, setValue] = useState("");
+
+  const numberClicked = (newVal: number) => {
+    console.log(newVal);
+    firstNum.push(newVal);
+    console.log(firstNum.join(""));
+    setValue(firstNum.join(""));
+  };
+
+  const operationClicked = (newOp) => {
+    console.log(newOp);
+  };
 
   return (
     <div>
       <input
-        type="text"
-        placeholder="Enter Your Data"
-        value={value}
+        type="number"
         onChange={(e) => setValue(e.target.value)}
+        value={value}
       />
-      <button onClick={() => console.log(value)}>Add</button>
+      <input
+        type="button"
+        placeholder="Enter Your Data"
+        value="1"
+        onClick={() => numberClicked(1)}
+      />
+      <input
+        type="button"
+        placeholder="Enter Your Data"
+        value="+"
+        onClick={() => operationClicked("+")}
+      />
     </div>
   );
 };
