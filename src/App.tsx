@@ -208,6 +208,8 @@ import { useState } from "react";
 // export default App;
 
 let firstNum = [];
+let secondNum = [];
+let opClicked = 0;
 
 const App = () => {
   const [value, setValue] = useState("");
@@ -217,10 +219,18 @@ const App = () => {
     firstNum.push(newVal);
     console.log(firstNum.join(""));
     setValue(firstNum.join(""));
+    if ((opClicked = 1)) {
+      setValue("");
+      secondNum.push(newVal);
+      console.log(secondNum.join(""));
+      setValue(secondNum.join(""));
+    }
   };
 
   const operationClicked = (newOp) => {
     console.log(newOp);
+    opClicked = +1;
+    // setValue("");
   };
 
   return (
@@ -230,7 +240,7 @@ const App = () => {
         onChange={(e) => setValue(e.target.value)}
         value={value}
       />
-      <input
+      {/* <input
         type="button"
         placeholder="Enter Your Data"
         value="1"
@@ -241,7 +251,10 @@ const App = () => {
         placeholder="Enter Your Data"
         value="+"
         onClick={() => operationClicked("+")}
-      />
+      /> */}
+      <button onClick={() => numberClicked(1)}>1</button>
+      <button onClick={() => numberClicked(2)}>2</button>
+      <button onClick={() => operationClicked("+")}>+</button>
     </div>
   );
 };
