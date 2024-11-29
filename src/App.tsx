@@ -215,16 +215,15 @@ const App = () => {
   const [value, setValue] = useState("");
 
   const numberClicked = (newVal: number) => {
-    // console.log(newVal);
-    firstNum.push(newVal);
-    // console.log(firstNum.join(""));
-    setValue(firstNum.join(""));
-    console.log(opClicked);
-    if ((opClicked = 1)) {
+    if (opClicked == 0) {
+      firstNum.push(newVal);
+      setValue(firstNum.join(""));
+      console.log("first = ", opClicked);
+    } else {
       setValue("");
       secondNum.push(newVal);
-      // console.log(secondNum.join(""));
       setValue(secondNum.join(""));
+      console.log("second = ", opClicked);
     }
   };
 
