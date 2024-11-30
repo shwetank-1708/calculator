@@ -207,31 +207,45 @@ import { useState } from "react";
 
 // export default App;
 
-let firstNum = [];
-let secondNum = [];
+let firstNum: number[] = [];
+let secondNum: number[] = [];
 let opClicked = 0;
+let first: number;
+let second: number;
 
 const App = () => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState<number>(0);
+  const [operation, setOperation] = useState("");
 
   const numberClicked = (newVal: number) => {
     if (opClicked == 0) {
-      firstNum.push(newVal);
-      setValue(firstNum.join(""));
+      firstNum.push(Number(newVal));
+      first = Number(firstNum.join(""));
+      setValue(first);
       console.log("first = ", opClicked);
     } else {
-      setValue("");
       secondNum.push(newVal);
-      setValue(secondNum.join(""));
+      second = Number(secondNum.join(""));
+      setValue(second);
       console.log("second = ", opClicked);
     }
   };
 
-  const operationClicked = (newOp) => {
+  const operationClicked = (newOp: string) => {
     console.log(newOp);
     opClicked = +1;
     console.log(opClicked);
+    setOperation(newOp);
     // setValue("");
+  };
+
+  const calResult = () => {
+    let result;
+
+    if (operation == "+") {
+      result = first + second;
+      setValue(result);
+    }
   };
 
   return (
@@ -253,9 +267,36 @@ const App = () => {
         value="+"
         onClick={() => operationClicked("+")}
       /> */}
-      <button onClick={() => numberClicked(1)}>1</button>
-      <button onClick={() => numberClicked(2)}>2</button>
-      <button onClick={() => operationClicked("+")}>+</button>
+      <button
+        onClick={() => numberClicked(1)}
+        className="bg-gray-300 p-2 rounded-full"
+      >
+        1
+      </button>
+      <button
+        onClick={() => numberClicked(2)}
+        className="bg-gray-300 p-2 rounded-full"
+      >
+        2
+      </button>
+      <button
+        onClick={() => operationClicked("+")}
+        className="bg-yellow-300 p-2 rounded-full"
+      >
+        +
+      </button>
+      <button
+        onClick={() => operationClicked("-")}
+        className="bg-yellow-300 p-2 rounded-full"
+      >
+        -
+      </button>
+      <button
+        onClick={() => calResult()}
+        className="bg-yellow-300 p-2 rounded-full"
+      >
+        =
+      </button>
     </div>
   );
 };
