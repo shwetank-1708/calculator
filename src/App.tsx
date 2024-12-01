@@ -259,123 +259,126 @@ const App = () => {
 
   return (
     <div className="bg-black h-[100vh] flex justify-center items-center flex-col">
-      <div>
+      <div className="">
         <input
           type="number"
           onChange={(e) => setValue(Number(e.target.value))}
           value={value}
+          className="text-white bg-black text-right p-4 w-[300px] text-4xl"
         />
       </div>
 
-      <div>
-        <button className="bg-gray-300 p-2 rounded-full">AC</button>
-        <button className="bg-gray-300 p-2 rounded-full">+/-</button>
-        <button className="bg-gray-300 p-2 rounded-full">%</button>
+      <div className="p-2 flex gap-1">
+        <button className="bg-gray-300 rounded-full w-[60px] p-4 border-2">
+          AC
+        </button>
+        <button className="bg-gray-300 rounded-full w-[60px] p-4">+/-</button>
+        <button className="bg-gray-300 rounded-full w-[60px] p-4">%</button>
         <button
           onClick={() => operationClicked("/")}
-          className="bg-yellow-300 p-2 rounded-full"
+          className="bg-yellow-600 rounded-full w-[60px] p-4 text-white"
         >
           /
         </button>
       </div>
 
-      <div>
+      <div className="p-2 flex gap-1">
         <button
           onClick={() => numberClicked(7)}
-          className="bg-gray-300 p-2 rounded-full"
+          className="bg-gray-600  rounded-full w-[60px] p-4 text-white"
         >
           7
         </button>
         <button
           onClick={() => numberClicked(8)}
-          className="bg-gray-300 p-2 rounded-full"
+          className="bg-gray-600  rounded-full w-[60px] p-4 text-white"
         >
           8
         </button>
         <button
           onClick={() => numberClicked(9)}
-          className="bg-gray-300 p-2 rounded-full"
+          className="bg-gray-600  rounded-full w-[60px] p-4 text-white"
         >
           9
         </button>
         <button
           onClick={() => operationClicked("*")}
-          className="bg-yellow-300 p-2 rounded-full"
+          className="bg-yellow-600  rounded-full w-[60px] p-4 text-white"
         >
           X
         </button>
       </div>
 
-      <div>
+      <div className="p-2 flex gap-1">
         <button
           onClick={() => numberClicked(4)}
-          className="bg-gray-300 p-2 rounded-full"
+          className="bg-gray-600  rounded-full w-[60px] p-4 text-white"
         >
           4
         </button>
         <button
           onClick={() => numberClicked(5)}
-          className="bg-gray-300 p-2 rounded-full"
+          className="bg-gray-600  rounded-full w-[60px] p-4 text-white"
         >
           5
         </button>
         <button
           onClick={() => numberClicked(6)}
-          className="bg-gray-300 p-2 rounded-full"
+          className="bg-gray-600  rounded-full w-[60px] p-4 text-white"
         >
           6
         </button>
         <button
           onClick={() => operationClicked("-")}
-          className="bg-yellow-300 p-2 rounded-full"
+          className="bg-yellow-600  rounded-full w-[60px] p-4 text-white"
         >
           -
         </button>
       </div>
 
-      <div>
+      <div className="p-2 flex gap-1">
         <button
           onClick={() => numberClicked(1)}
-          className="bg-gray-300 p-2 rounded-full"
+          className="bg-gray-600  rounded-full w-[60px] p-4 text-white"
         >
           1
         </button>
         <button
           onClick={() => numberClicked(2)}
-          className="bg-gray-300 p-2 rounded-full"
+          className="bg-gray-600  rounded-full w-[60px] p-4 text-white"
         >
           2
         </button>
         <button
           onClick={() => numberClicked(3)}
-          className="bg-gray-300 p-2 rounded-full"
+          className="bg-gray-600  rounded-full w-[60px] p-4 text-white"
         >
           3
         </button>
         <button
           onClick={() => operationClicked("+")}
-          className="bg-yellow-300 p-2 rounded-full"
+          className="bg-yellow-600  rounded-full w-[60px] p-4 text-white"
         >
           +
         </button>
       </div>
 
-      <div>
+      <div className="p-2 flex gap-1">
         <button
           onClick={() => numberClicked(0)}
-          className="bg-gray-300 p-2 rounded-full"
+          className="bg-gray-600  rounded-full w-[130px] p-4 text-white"
         >
           0
         </button>
         <button
           onClick={() => numberClicked(3)}
-          className="bg-gray-300 p-2 rounded-full"
+          className="bg-gray-600  rounded-full w-[60px] p-4 text-white"
         >
           .
         </button>
         <button
           onClick={() => calResult()}
-          className="bg-yellow-300 p-2 rounded-full"
+          className="bg-yellow-600  rounded-full w-[60px] p-4 text-white text-left"
         >
           =
         </button>
