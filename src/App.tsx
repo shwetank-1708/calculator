@@ -1,8 +1,6 @@
 // import { useState } from "react";
 // import "./App.css";
 
-import { useState } from "react";
-
 // let firstNum: number[] = [];
 // let secondNum: number[] = [];
 
@@ -207,6 +205,8 @@ import { useState } from "react";
 
 // export default App;
 
+import { useState } from "react";
+
 let firstNum: number[] = [];
 let secondNum: number[] = [];
 let opClicked = 0;
@@ -252,21 +252,9 @@ const App = () => {
     <div>
       <input
         type="number"
-        onChange={(e) => setValue(e.target.value)}
+        onChange={(e) => setValue(Number(e.target.value))}
         value={value}
       />
-      {/* <input
-        type="button"
-        placeholder="Enter Your Data"
-        value="1"
-        onClick={() => numberClicked(1)}
-      />
-      <input
-        type="button"
-        placeholder="Enter Your Data"
-        value="+"
-        onClick={() => operationClicked("+")}
-      /> */}
       <button
         onClick={() => numberClicked(1)}
         className="bg-gray-300 p-2 rounded-full"
