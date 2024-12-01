@@ -245,46 +245,141 @@ const App = () => {
     if (operation == "+") {
       result = first + second;
       setValue(result);
+    } else if (operation == "-") {
+      result = first - second;
+      setValue(result);
+    } else if (operation == "*") {
+      result = first * second;
+      setValue(result);
+    } else if (operation == "/") {
+      result = first / second;
+      setValue(result);
     }
   };
 
   return (
-    <div>
-      <input
-        type="number"
-        onChange={(e) => setValue(Number(e.target.value))}
-        value={value}
-      />
-      <button
-        onClick={() => numberClicked(1)}
-        className="bg-gray-300 p-2 rounded-full"
-      >
-        1
-      </button>
-      <button
-        onClick={() => numberClicked(2)}
-        className="bg-gray-300 p-2 rounded-full"
-      >
-        2
-      </button>
-      <button
-        onClick={() => operationClicked("+")}
-        className="bg-yellow-300 p-2 rounded-full"
-      >
-        +
-      </button>
-      <button
-        onClick={() => operationClicked("-")}
-        className="bg-yellow-300 p-2 rounded-full"
-      >
-        -
-      </button>
-      <button
-        onClick={() => calResult()}
-        className="bg-yellow-300 p-2 rounded-full"
-      >
-        =
-      </button>
+    <div className="bg-black h-[100vh] flex justify-center items-center flex-col">
+      <div>
+        <input
+          type="number"
+          onChange={(e) => setValue(Number(e.target.value))}
+          value={value}
+        />
+      </div>
+
+      <div>
+        <button className="bg-gray-300 p-2 rounded-full">AC</button>
+        <button className="bg-gray-300 p-2 rounded-full">+/-</button>
+        <button className="bg-gray-300 p-2 rounded-full">%</button>
+        <button
+          onClick={() => operationClicked("/")}
+          className="bg-yellow-300 p-2 rounded-full"
+        >
+          /
+        </button>
+      </div>
+
+      <div>
+        <button
+          onClick={() => numberClicked(7)}
+          className="bg-gray-300 p-2 rounded-full"
+        >
+          7
+        </button>
+        <button
+          onClick={() => numberClicked(8)}
+          className="bg-gray-300 p-2 rounded-full"
+        >
+          8
+        </button>
+        <button
+          onClick={() => numberClicked(9)}
+          className="bg-gray-300 p-2 rounded-full"
+        >
+          9
+        </button>
+        <button
+          onClick={() => operationClicked("*")}
+          className="bg-yellow-300 p-2 rounded-full"
+        >
+          X
+        </button>
+      </div>
+
+      <div>
+        <button
+          onClick={() => numberClicked(4)}
+          className="bg-gray-300 p-2 rounded-full"
+        >
+          4
+        </button>
+        <button
+          onClick={() => numberClicked(5)}
+          className="bg-gray-300 p-2 rounded-full"
+        >
+          5
+        </button>
+        <button
+          onClick={() => numberClicked(6)}
+          className="bg-gray-300 p-2 rounded-full"
+        >
+          6
+        </button>
+        <button
+          onClick={() => operationClicked("-")}
+          className="bg-yellow-300 p-2 rounded-full"
+        >
+          -
+        </button>
+      </div>
+
+      <div>
+        <button
+          onClick={() => numberClicked(1)}
+          className="bg-gray-300 p-2 rounded-full"
+        >
+          1
+        </button>
+        <button
+          onClick={() => numberClicked(2)}
+          className="bg-gray-300 p-2 rounded-full"
+        >
+          2
+        </button>
+        <button
+          onClick={() => numberClicked(3)}
+          className="bg-gray-300 p-2 rounded-full"
+        >
+          3
+        </button>
+        <button
+          onClick={() => operationClicked("+")}
+          className="bg-yellow-300 p-2 rounded-full"
+        >
+          +
+        </button>
+      </div>
+
+      <div>
+        <button
+          onClick={() => numberClicked(0)}
+          className="bg-gray-300 p-2 rounded-full"
+        >
+          0
+        </button>
+        <button
+          onClick={() => numberClicked(3)}
+          className="bg-gray-300 p-2 rounded-full"
+        >
+          .
+        </button>
+        <button
+          onClick={() => calResult()}
+          className="bg-yellow-300 p-2 rounded-full"
+        >
+          =
+        </button>
+      </div>
     </div>
   );
 };
