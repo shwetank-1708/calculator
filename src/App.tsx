@@ -9,33 +9,34 @@ let second: number;
 const App = () => {
   const [value, setValue] = useState<number>(0);
   const [operation, setOperation] = useState("");
-  const [isActive, setIsActive] = useState(false);
+  const [activeButton, setActiveButton] = useState<number | null>(null);
+  const [activeOperation, setActiveOperation] = useState<string | null>(null);
 
   const numberClicked = (newVal: number) => {
     if (opClicked == 0) {
       firstNum.push(Number(newVal));
       first = Number(firstNum.join(""));
       setValue(first);
-      console.log("first = ", opClicked);
     } else {
       secondNum.push(newVal);
       second = Number(secondNum.join(""));
       setValue(second);
-      console.log("second = ", opClicked);
     }
-    // setIsActive(!isActive);
-    setIsActive(true);
+
+    setActiveButton(newVal); // Set the clicked number button as active
     setTimeout(() => {
-      setIsActive(false);
+      setActiveButton(null); // Reset after a short delay
     }, 50);
   };
 
   const operationClicked = (newOp: string) => {
-    console.log(newOp);
     opClicked = +1;
-    console.log(opClicked);
     setOperation(newOp);
-    // setValue("");
+
+    setActiveOperation(newOp); // Set the clicked operation button as active
+    setTimeout(() => {
+      setActiveOperation(null); // Reset after a short delay
+    }, 50);
   };
 
   const calResult = () => {
@@ -56,6 +57,16 @@ const App = () => {
     }
   };
 
+  const numberButtonClass = (num: number) =>
+    `rounded-full w-[60px] p-4 text-white font-bold text-xl ${
+      activeButton === num ? "bg-gray-500" : "bg-gray-900"
+    }`;
+
+  const operationButtonClass = (op: string) =>
+    `bg-yellow-600 rounded-full w-[60px] p-4 text-white font-bold text-xl ${
+      activeOperation === op ? "bg-yellow-400" : "bg-yellow-600"
+    }`;
+
   return (
     <div className="bg-black h-[100vh] flex justify-center items-center flex-col">
       <div className="">
@@ -68,9 +79,7 @@ const App = () => {
       </div>
 
       <div className="flex gap-2">
-        <button
-          className={`bg-gray-500 rounded-full w-[60px] p-4 font-bold text-xl`}
-        >
+        <button className="bg-gray-500 rounded-full w-[60px] p-4 font-bold text-xl">
           AC
         </button>
         <button className="bg-gray-500 rounded-full w-[60px] p-4 font-bold text-xl">
@@ -81,113 +90,84 @@ const App = () => {
         </button>
         <button
           onClick={() => operationClicked("/")}
-          className="bg-yellow-600 rounded-full w-[60px] p-4 text-white font-bold text-xl"
+          className={operationButtonClass("/")}
         >
           /
         </button>
       </div>
 
       <div className="p-2 flex gap-2">
-        <button
-          onClick={() => numberClicked(7)}
-          className={`rounded-full w-[60px] p-4 text-white font-bold text-xl ${
-            isActive ? "bg-gray-500" : "bg-gray-900"
-          }`}
-        >
-          7
-        </button>
-        <button
-          onClick={() => numberClicked(8)}
-          className={`rounded-full w-[60px] p-4 text-white font-bold text-xl ${
-            isActive ? "bg-gray-500" : "bg-gray-900"
-          }`}
-        >
-          8
-        </button>
-        <button
-          onClick={() => numberClicked(9)}
-          className="bg-gray-600  rounded-full w-[60px] p-4 text-white font-bold text-xl"
-        >
-          9
-        </button>
+        {[7, 8, 9].map((num) => (
+          <button
+            key={num}
+            onClick={() => numberClicked(num)}
+            className={numberButtonClass(num)}
+          >
+            {num}
+          </button>
+        ))}
         <button
           onClick={() => operationClicked("*")}
-          className="bg-yellow-600  rounded-full w-[60px] p-4 text-white font-bold text-xl"
+          className={operationButtonClass("*")}
         >
           X
         </button>
       </div>
 
       <div className="flex gap-2">
-        <button
-          onClick={() => numberClicked(4)}
-          className="bg-gray-600  rounded-full w-[60px] p-4 text-white font-bold text-xl"
-        >
-          4
-        </button>
-        <button
-          onClick={() => numberClicked(5)}
-          className="bg-gray-600  rounded-full w-[60px] p-4 text-white font-bold text-xl"
-        >
-          5
-        </button>
-        <button
-          onClick={() => numberClicked(6)}
-          className="bg-gray-600  rounded-full w-[60px] p-4 text-white font-bold text-xl"
-        >
-          6
-        </button>
+        {[4, 5, 6].map((num) => (
+          <button
+            key={num}
+            onClick={() => numberClicked(num)}
+            className={numberButtonClass(num)}
+          >
+            {num}
+          </button>
+        ))}
         <button
           onClick={() => operationClicked("-")}
-          className="bg-yellow-600  rounded-full w-[60px] p-4 text-white font-bold text-xl"
+          className={operationButtonClass("-")}
         >
           -
         </button>
       </div>
 
       <div className="p-2 flex gap-2">
-        <button
-          onClick={() => numberClicked(1)}
-          className="bg-gray-600  rounded-full w-[60px] p-4 text-white font-bold text-xl"
-        >
-          1
-        </button>
-        <button
-          onClick={() => numberClicked(2)}
-          className="bg-gray-600  rounded-full w-[60px] p-4 text-white font-bold text-xl"
-        >
-          2
-        </button>
-        <button
-          onClick={() => numberClicked(3)}
-          className="bg-gray-600  rounded-full w-[60px] p-4 text-white font-bold text-xl"
-        >
-          3
-        </button>
+        {[1, 2, 3].map((num) => (
+          <button
+            key={num}
+            onClick={() => numberClicked(num)}
+            className={numberButtonClass(num)}
+          >
+            {num}
+          </button>
+        ))}
         <button
           onClick={() => operationClicked("+")}
-          className="bg-yellow-600  rounded-full w-[60px] p-4 text-white font-bold text-xl"
+          className={operationButtonClass("+")}
         >
           +
         </button>
       </div>
 
-      <div className="flex gap-2">
+      <div className="p-2 flex gap-2">
         <button
           onClick={() => numberClicked(0)}
-          className="bg-gray-600  rounded-full w-[130px] p-4 text-white font-bold text-xl text-left"
+          className={`bg-gray-600 rounded-full w-[130px] p-4 text-white font-bold text-xl text-left ${
+            activeButton === 0 ? "bg-gray-500" : "bg-gray-900"
+          }`}
         >
           0
         </button>
         <button
           onClick={() => numberClicked(3)}
-          className="bg-gray-600  rounded-full w-[60px] p-4 text-white font-bold text-xl"
+          className={numberButtonClass(3)}
         >
           .
         </button>
         <button
           onClick={() => calResult()}
-          className="bg-yellow-600  rounded-full w-[60px] p-4 text-white font-bold text-xl"
+          className="bg-yellow-600 rounded-full w-[60px] p-4 text-white font-bold text-xl"
         >
           =
         </button>
