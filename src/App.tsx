@@ -57,6 +57,12 @@ const App = () => {
     }
   };
 
+  const acClicked = () => {
+    setValue(0);
+    firstNum = [];
+    secondNum = [];
+  };
+
   const numberButtonClass = (num: number) =>
     `rounded-full w-[60px] p-4 text-white font-bold text-xl ${
       activeButton === num ? "bg-gray-500" : "bg-gray-900"
@@ -79,7 +85,10 @@ const App = () => {
       </div>
 
       <div className="flex gap-2">
-        <button className="bg-gray-500 rounded-full w-[60px] p-4 font-bold text-xl">
+        <button
+          className="bg-gray-500 rounded-full w-[60px] p-4 font-bold text-xl"
+          onClick={() => acClicked()}
+        >
           AC
         </button>
         <button className="bg-gray-500 rounded-full w-[60px] p-4 font-bold text-xl">
