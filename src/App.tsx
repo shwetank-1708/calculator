@@ -69,7 +69,7 @@ const App = () => {
     }`;
 
   const operationButtonClass = (op: string) =>
-    `bg-yellow-600 rounded-full w-[60px] p-4 text-white font-bold text-xl ${
+    `rounded-full w-[60px] p-4 text-white font-bold text-xl ${
       activeOperation === op ? "bg-yellow-400" : "bg-yellow-600"
     }`;
 
@@ -159,7 +159,7 @@ const App = () => {
         </button>
       </div>
 
-      <div className="p-2 flex gap-2">
+      <div className="flex gap-2">
         <button
           onClick={() => numberClicked(0)}
           className={`bg-gray-600 rounded-full w-[130px] p-4 text-white font-bold text-xl text-left ${
