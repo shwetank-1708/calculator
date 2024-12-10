@@ -180,7 +180,7 @@ const Calc = () => {
         <button
           onClick={() => numberClicked(".")}
           className={`rounded-full w-[60px] p-4 text-white font-bold text-xl ${
-            activeButton === null ? "bg-gray-500" : "bg-gray-900"
+            activeButton === null ? "bg-red-500" : "bg-gray-900"
           }`}
         >
           .
