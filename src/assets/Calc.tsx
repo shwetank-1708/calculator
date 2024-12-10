@@ -42,7 +42,7 @@ const Calc = () => {
   };
 
   const calResult = () => {
-    let result;
+    let result: number | undefined;
 
     if (operation === "+") {
       result = first + second;
@@ -54,8 +54,13 @@ const Calc = () => {
       result = first / second;
     }
 
-    setValue(result);
-    firstNum = [String(result)]; // Store result as the next first number
+    if (result !== undefined) {
+      setValue(result);
+      firstNum = [String(result)]; // Store result as the next first number
+    } else {
+      setValue("Error"); // Display error if the result is undefined
+    }
+
     secondNum = [];
     opClicked = 0;
   };
